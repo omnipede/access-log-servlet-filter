@@ -14,6 +14,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     implementation group: 'nl.basjes.parse.useragent', name: 'yauaa', version: '5.23'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.3.RELEASE'
+    implementation group: 'com.fasterxml.jackson.module', name: 'jackson-module-kotlin', version: '2.12.3'
 
     implementation group: 'org.apache.commons', name: 'commons-io', version: '1.3.2'
     implementation group: 'commons-validator', name: 'commons-validator', version: '1.7'
