@@ -13,15 +13,33 @@ repositories {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     implementation group: 'nl.basjes.parse.useragent', name: 'yauaa', version: '5.23'
-    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
-    implementation group: 'commons-io', name: 'commons-io', version: '2.10.0'
-    implementation group: 'org.springframework', name: 'spring-web', version: '5.3.8'
-    implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.3.8'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.3.RELEASE'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation group: 'org.apache.commons', name: 'commons-io', version: '1.3.2'
+    implementation group: 'commons-validator', name: 'commons-validator', version: '1.7'
+
+    testImplementation ('org.springframework.boot:spring-boot-starter-test:2.3.3.RELEASE') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        exclude group: 'org.mockito', module: 'mockito-core'
+    }
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.2.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.8.0'
+    testImplementation group: 'org.mockito', name: 'mockito-inline', version: '3.8.0'
 }
 
 test {
     useJUnitPlatform()
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+}
+
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
 }
