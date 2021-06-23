@@ -146,6 +146,7 @@ internal class AccessLogFilterTest {
             else -> assertThat(accessLog.responseBody).isEqualTo(responseBody)
         }
 
+        assertThat(accessLog.hostName).isNotNull
         assertThat(accessLog.method).isEqualTo(httpServletRequest.method)
         assertThat(accessLog.uri).isEqualTo(httpServletRequest.requestURI)
         assertThat(accessLog.query).isEqualTo(httpServletRequest.queryString)
