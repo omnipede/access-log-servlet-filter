@@ -35,4 +35,35 @@ class AccessLogFilterConfigurer(
         // 존재하면 true 반환
         return findResult != null
     }
+
+    companion object {
+
+        @JvmStatic
+        fun builder() = Builder()
+
+        class Builder {
+
+            private var whiteList: List<String> = emptyList()
+            private var maxContentLength: Int = 1024
+            private var enableContentLogging: Boolean = false
+
+            fun whiteList(whiteList: List<String>) = apply {
+                this.whiteList = whiteList
+            }
+
+            fun maxContentLength(maxContentLength: Int) = apply {
+                this.maxContentLength = maxContentLength
+            }
+
+            fun enableContentLogging(enableContentLogging: Boolean) = apply {
+                this.enableContentLogging = enableContentLogging
+            }
+
+            fun build() = AccessLogFilterConfigurer(
+                whiteList, maxContentLength, enableContentLogging
+            )
+        }
+    }
+
+
 }

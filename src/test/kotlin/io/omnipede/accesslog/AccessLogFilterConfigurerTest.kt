@@ -95,4 +95,25 @@ internal class AccessLogFilterConfigurerTest {
         // Then
         assertThat(result).isFalse
     }
+
+    @Test
+    @DisplayName("Builder 테스트")
+    fun builder_test() {
+
+        // Given
+        val whiteList = emptyList<String>()
+        val maxContentLength = 2048
+        val enableContentLogging = true
+
+        // When
+        val configurer = AccessLogFilterConfigurer.builder()
+            .whiteList(whiteList)
+            .enableContentLogging(enableContentLogging)
+            .maxContentLength(maxContentLength)
+            .build()
+
+        // Then
+        assertThat(configurer.enableContentLogging).isEqualTo(enableContentLogging)
+        assertThat(configurer.maxContentLength).isEqualTo(maxContentLength)
+    }
 }
